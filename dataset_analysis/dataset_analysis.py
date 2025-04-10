@@ -1,3 +1,4 @@
+# dataset_analysis.py
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,10 +9,10 @@ from sklearn.decomposition import PCA
 # ===========================
 # Assume the four datasets are stored as Parquet files.
 file_paths = {
-    "Dataset1": "../datasets/model1/auto_rankings1.parquet",
-    "Dataset2": "../datasets/model2/auto_rankings2.parquet",
-    "Dataset3": "../datasets/model3/auto_rankings3.parquet",
-    "Dataset4": "../datasets/model4/auto_rankings4.parquet"
+    "Dataset1": "../datasets/model1/model1_dataset1.parquet",
+    "Dataset2": "../datasets/model2/model2_dataset2.parquet",
+    "Dataset3": "../datasets/model3/model3_dataset3.parquet",
+    "Dataset4": "../datasets/model4/model4_dataset4.parquet",
 }
 
 # Define the numeric columns (score columns) for analysis

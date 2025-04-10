@@ -1,3 +1,4 @@
+# spearman_multi_4_attributes.py
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,7 +11,7 @@ import os
 parser = argparse.ArgumentParser(description='Compare multiple ranking files using correlation and ranking similarity metrics.')
 parser.add_argument('--ranking_files', type=str, nargs='+', required=True,
                     help='List of ranking files to compare (txt or csv)')
-parser.add_argument('--output', type=str, default='ranking_comparison.png',
+parser.add_argument('--output', type=str, default='ranking_comparison_attributes.png',
                     help='Output filename for the plot')
 args = parser.parse_args()
 
