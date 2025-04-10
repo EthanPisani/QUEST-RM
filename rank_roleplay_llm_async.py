@@ -10,7 +10,7 @@ app = Flask(__name__)
 # model = "DeepSeek-R1-Distill-Qwen-14B-exl2"
 model = "deepseek-ai_DeepSeek-R1-Distill-Llama-8B-exl2"
 # API URL
-OPENAI_API_KEY = "f2470b56e3d23f2e52327eac74445f36"
+OPENAI_API_KEY = ""
 OPENAI_API_URL = "http://10.0.9.12:5008/v1/completions"
 # List of features to rank
 features = [
