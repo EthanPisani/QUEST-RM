@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank Roleplay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #161616;
+            color: #e9e9e9;
+        }
+        h1 {
+            color: #dadada;
+        }
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: #242424;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .text-section, .ranking-section {
+            background: #1c1c1c;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .ranking-section {
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        .button-container {
+            margin-top: 20px;
+            text-align: right; 
+        }
+        button {
+            background-color: #007bff;
+            color: #cacaca;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .roleplay_count {
+            text-align: center;
+            font-size: 1.6rem;
+        }
+        /* Desktop Layout */
+        @media (min-width: 1068px) {
+            .content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .text-section {
+                flex: 1;
+                margin-right: 20px;
+            }
+            .ranking-section {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rank Roleplay: {{ roleplay.title }}</h1>
+        <div class="content">
+            <!-- Text Section -->
+            <div class="text-section">
+                <p><strong>User's Message:</strong></p>
+                <blockquote>{{ user_message }}</blockquote>
+                <p><strong>Assistant's Response:</strong></p>
+                <blockquote>{{ assistant_message }}</blockquote>
+            </div>
+            <!-- Ranking Section -->
+            <div class="ranking-section">
+                <form method="POST">
+                    <input type="hidden" name="roleplay_id" value="{{ roleplay.id }}">
+                    
+                    {% for feature in features %}
+                        <label for="{{ feature }}">{{ feature }}</label>
+                        <input type="range" id="{{ feature }}" name="{{ feature }}" min="1.0" max="10.0" step="0.5" value="5.0" oninput="this.nextElementSibling.value = this.value">
+                        <output>5.0</output>
+                    {% endfor %}
+                
+                    <div class="button-container">
+                        <button type="submit">Next</button>
+                    </div>
+                </form>
+                
+                <!-- Roleplay counter -->
+                <p class="roleplay_count">{{ roleplay_number }} / 50,000</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("/rank/{{ roleplay_id }}")
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // is a dict of ranking names and scores
+                    for (const [feature, score] of Object.entries(data)) {
+                        console.log([feature,score]);
+                        const input = document.getElementById(feature);
+                        input.value = score;
+                        input.nextElementSibling.value = score;
+
+                    }
+                })
+                .catch(error => console.error("Error fetching rankings:", error));
+        });
+    </script>
+</body>
+</html>

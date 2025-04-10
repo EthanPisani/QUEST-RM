@@ -1,0 +1,12 @@
+claude-3.5-sonnet-20240620
+llama-3-1-405b-instruct-fp8
+gpt-4-1106-preview
+llama-3.1-70b-instruct
+gpt-4o
+yi-large
+higgs-llama-3-70b
+qwen-2-72b-instruct
+llama-3-70b-instruct
+llama3.1-8B-instruct
+gemini-1.5-pro-001
+mistral-large-2402

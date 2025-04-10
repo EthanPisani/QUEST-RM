@@ -1,0 +1,13 @@
+import re
+
+dataset_text = """<div style="white-space:pre-wrap;">Reserved for <a class="bb-mention" href="/users/xion-demente">@Xion Demente</a>. <img src="/smilies/sun.gif"/><br/><hr class="bb-hr"/><br/><div class="bb-center"><iframe allowfullscreen="" frameborder="0" height="279" src="//youtube.com/embed/VBQ8FBfhvsE?theme=dark" width="496"></iframe></div><br/><br/><blockquote class="bb-quote"><span class="bb-i">The Last of Us takes place in the year 2033, twenty years after a fungal-based, brain-altering pandemic has spread and infected over 60% of the world's population.[4] Since the outbreak, the world has gone into a state of panic and frenzy as officials try to fix and keep the situation under control. When the World Health Organization's attempts to procure a vaccine fail, the United States government does away with the bureaucrats in power and the establishment of civilian government. The country is turned into a police state under the control of homeland security and the military, and cities across the nation are placed under martial law one by one. Survivors of the pandemic are assigned to designated quarantine zones that are supposed to separate them from the infected and keep them safe.<br/><br/>Sometime within the twenty years leading up to the main events of the game, a rebel paramilitary group calling themselves the Fireflies is established, with their main goal being the restoration of lawful government in the United States, as well as finding and producing a vaccine for the Cordyceps Brain Infection. The Fireflies defy the authorities by attacking the military and encouraging uprisings.</span></blockquote><br/><br/><div class="hider-panel"><div class="hider-heading"><button class="btn btn-default btn-xs hider-button" data-name="Character Skeleton" type="button">Character Skeleton [+]</button></div><div class="hider-body" style="display: none">Name:<br/><br/>Age: (18 to 28.)<br/><br/>Gender:<br/><br/>Status: (Immune or Not Immune.)<br/><br/>Appearance: (Realistic picture.)<br/><br/>Biography: (A paragraph is fine!)<br/><br/>Personality:<br/><br/>Skills:<br/><br/>Weapons: (Up to four items.)</div></div></div>"""
+
+def clean_html(raw_text):
+    # Remove HTML tags
+    clean_text = re.sub(r'<.*?>', '', raw_text)
+    # Decode HTML entities
+    clean_text = re.sub(r'&\w+;', '', clean_text)
+
+    return clean_text
+
+print(clean_html(raw_text=dataset_text))

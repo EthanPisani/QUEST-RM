@@ -1,0 +1,12 @@
+chatgpt-4o
+claude-3-5-sonnet
+gpt-4o
+gpt-4-1106-preview
+llama-3.1-70b-instruct
+yi-large
+gpt-4o
+gpt-4o-mini
+llama3.1-8B-instruct
+llama-3-1-405b-instruct-fp8 
+llama-3-70b-instruct
+qwen-2-72b-instruct
