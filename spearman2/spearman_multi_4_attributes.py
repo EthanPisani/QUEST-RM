@@ -181,7 +181,8 @@ for i in range(n):
 
 # Create a figure with 2 rows and 2 columns for the four matrices
 fig, axs = plt.subplots(2, 2, figsize=(18, 14))
-fig.suptitle('Ranking Comparison: Spearman, Kendall, MAR, and RBO', fontsize=18)
+files_names = ', '.join([os.path.basename(file).split(".")[0] for file in args.ranking_files])
+fig.suptitle(f'Ranking Comparison: Spearman, Kendall, MAR, and RBO \n{files_names}', fontsize=18)
 
 # Plot Spearman correlation matrix
 sns.heatmap(spearman_matrix, annot=spearman_annot, fmt="", cmap="coolwarm", 
