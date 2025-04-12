@@ -7,16 +7,17 @@ This comprehensive system provides tools for processing roleplay datasets, explo
 1. [System Overview](#system-overview)
 2. [Installation and Requirements](#installation-and-requirements)
 3. [Component Descriptions](#component-descriptions)
+   - [Dataset Downloading](#dataset-downloading)
    - [Dataset Preprocessor](#dataset-preprocessor)
    - [Dataset Explorer](#dataset-explorer)
    - [Human Ranking Web UI](#human-ranking-web-ui)
    - [Automatic Ranking System](#automatic-ranking-system)
    - [Dataset Analysis Tools](#dataset-analysis-tools)
    - [Model Performance Analysis](#model-performance-analysis)
-4. [Workflow](#workflow)
-5. [Configuration](#configuration)
-6. [Troubleshooting](#troubleshooting)
-7. [Output Formats](#output-formats)
+5. [Workflow](#workflow)
+6. [Configuration](#configuration)
+7. [Troubleshooting](#troubleshooting)
+8. [Output Formats](#output-formats)
 
 ## System Overview
 
@@ -71,6 +72,35 @@ Core dependencies:
 - pydantic
 
 ## Component Descriptions
+
+### Dataset Downloading
+
+Before running any of the dataset processing scripts, you must first download the raw roleplay datasets. A convenient script is provided to automate this process.
+
+#### Step 1: Make the Script Executable
+
+```bash
+chmod +x download_datasets.sh
+```
+
+#### Step 2: Run the Script
+
+This will download and extract all necessary datasets into corresponding folders:
+
+```bash
+./download_datasets.sh
+```
+
+This script performs the following:
+
+- Downloads multi-part and regular archives from multiple sources (e.g., Catbox, Hugging Face).
+- Automatically extracts 7z and ZIP files into organized directories.
+- Fetches the **FIREBALL** dataset using git to a local folder.
+
+> Note: Ensure you have `7z`, `wget`, `unzip`, and git.
+
+Once the script has completed, you'll have all raw datasets available for further preprocessing using `dataset_preprocessed.py`.
+
 
 ### Dataset Preprocessor
 
